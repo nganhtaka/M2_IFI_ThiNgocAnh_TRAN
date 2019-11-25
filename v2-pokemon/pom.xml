@@ -62,29 +62,33 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+
+        <!--        uncomment when working on server (heroku) -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.22.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <!-- <configuration>
-                        <mainClass>${start-class}</mainClass>
-                        <layout>JAR</layout>
-                    </configuration>
-                    <executions>
-                        <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                        </execution>
-                    </executions> -->
                 </plugin>
             </plugins>
         </pluginManagement>
